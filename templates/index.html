@@ -1,0 +1,265 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+     <section id="hero" class="d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+          {% for i in institue %}
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <h1>{{ i.main_quote_line1 }}</h1>
+          <h2>{{ i.main_quote_line2 }}</h2>
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <h3><a href="/contact_us" class="btn-get-started scrollto">Enroll Now</a></h3>
+
+          </div>
+        </div>
+
+        <div class="col-lg-6 order-1 order-lg-2 hero-img"  data-aos-delay="200">
+          <img src="{{ i.main_thumbnail.url }}" class="img-fluid animated" alt="" >
+        </div>
+          {%  endfor %}
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+<!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients clients">
+      <div class="container">
+
+        <div class="row">
+            {% for authors in authors %}
+          <div class="col-lg-3 col-md-4 col-6">
+            <img src="{{ authors.author_image.url }}" class="img-fluid" alt="" data-aos="zoom-in">
+          </div>
+            {% endfor %}
+
+        </div>
+
+      </div>
+    </section><!-- End Clients Section -->
+
+<!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-4 d-flex align-items-stretch">
+            <div class="content">
+              <h3>Why Choose Learning point?</h3>
+              <p>
+                  {% for why in whychoose %}
+                  <i class="fa fa-check-square" style="color: #fff;"></i> {{ why.line }}<br>
+                  {% endfor %}
+              </p>
+
+            </div>
+          </div>
+          <div class="col-lg-8 d-flex align-items-stretch">
+            <div class="icon-boxes d-flex flex-column justify-content-center">
+              <div class="row">
+                {% for card in cards %}
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="{{ card.card_icon }}"></i>
+                    <h4>{{ card.card_name }}</h4>
+                    <p>{{ card.card_description }}</p>
+                  </div>
+                </div>
+                  {% endfor %}
+              </div>
+            </div><!-- End .content-->
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Our Courses</h2>
+          <p>We are providing these courses</p>
+        </div>
+
+        <div class="row">
+            {% for course in courses %}
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon"><img class="card-img-top" src="{{ course.course_logo.url }}" alt="Card image cap"></div>
+              <h4 class="title"><a href="">{{ course.course_name }}</a></h4>
+              <p class="description">{{ course.course_description }}</p>
+            </div>
+          </div>
+            {% endfor %}
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+    <!-- ======= More Services Section ======= -->
+    <section id="more-services" class="more-services">
+      <div class="container">
+           <div class="section-title" data-aos="fade-up">
+          <h2>Find Latest Blogs</h2>
+
+        </div>
+        <div class="row">
+          {% for obj in latest %}
+          <div class="col-md-4 d-flex align-items-stretch">
+            <div class="card mb-4" style='background-image: url("{{ obj.thumbnail.url }}");' data-aos="fade-up" data-aos-delay="100">
+              <div class="card-body">
+                <h5 class="card-title"><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></h5>
+
+                <h6 class="card-text">{{ obj.overview|linebreaks|truncatechars:100 }}</h6>
+                <div class="read-more"><a href="{{ obj.get_absolute_url }}"><i class="fa fa-arrow-right"></i> Read More</a></div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        </div>
+          <div class="py-5 text-center"><a href="/blog" class="btn btn-dark px-5 py-3 text-uppercase">View More Articles <i class="fa fa-arrow-right"></i></a></div>
+      </div>
+      </div>
+    </section><!-- End More Services Section -->
+<!-- ======= Stories Section ======= -->
+<section id="stories" class="more-services">
+    <div class="container">
+         <div class="section-title" data-aos="fade-up">
+        <h2>Our Success Stories</h2>
+          <p>You Trusted, We Delivered</p>
+      </div>
+      <div class="row">
+        {% for story in latest_stories %}
+        <div class="col-md-4 mb-4">
+          <div class="bg-white rounded shadow-sm"><img src="{{ story.thumbnail.url }}" alt="" class="img-fluid card-img-top">
+            <div class="p-4">
+              <h5> <a href="{{ story.get_absolute_url }}" class="text-dark">{{ story.student_name }}</a></h5>
+              <p class="small text-muted mb-0">{{ story.student_overview }}</p>
+              <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                <p class="small mb-0"><i class="fa fa-star mr-2"></i><span class="font-weight-bold">Band Score</span></p>
+                <div class="badge badge-info px-3 rounded-pill font-weight-normal">{{ story.band_score }}</div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+          {% endfor %}
+      </div>
+      </div>
+        <div class="py-5 text-center"><a href="/story" class="btn btn-dark px-5 py-3 text-uppercase">View More Stories <i class="fa fa-arrow-right"></i></a></div>
+    </div>
+    </div>
+  </section><!-- End Stories Section -->
+<!-- ======= Features Section ======= -->
+    <section id="features" class="features no-padding-top">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Features of Learning Point</h2>
+          <p>We are providing these features</p>
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="300">
+          {% for f in features %}
+          <div class="col-lg-3 col-md-4 mb-2">
+            <div class="icon-box">
+              <i class="fa fa-check-square" style="color: #ad1e35;"></i>
+              <h3>{{ f.feature_name }}</h3>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+
+      </div>
+    </section><!-- End Features Section -->
+
+    <!-- Divider Section-->
+    <section style="background: url({% static 'img/8.jpg' %}); background-size: cover; background-position: center bottom" class="divider">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7 text-dark">
+            <h2>Earning Morning and Evening batches available for working professional</h2><a href="contact_us/" class="hero-link">Send message for call</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section>
+    <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Students Reviews</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-xl-12 mx-auto">
+                <div class="bg-white shadow rounded p-4">
+                    <!--  carousel-->
+                    <div class="carousel slide" id="carouselExampleIndicators" data-ride="carousel">
+                        <!-- Bootstrap carousel indicators [nav] -->
+                        <ol class="carousel-indicators mb-0">
+                            <li class="active" data-target="#carouselExampleIndicators" data-slide-to="0" ></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+
+                        <!-- inner [slides]-->
+                        <div class="carousel-inner px-5 pb-4">
+                            <!-- Carousel slide-->
+                            {% for p in reviews %}
+                            {% if forloop.counter == 1 %}
+                            <div class="carousel-item active">
+                                <div class="media">
+                                    <div class="media-body ml-3">
+                                        <blockquote class="blockquote border-0 p-0">
+                                            <p class="card-text"> <i class="fa fa-quote-left mr-3 text-danger"></i>{{ p.message }}</p>
+                                            <footer class="blockquote-footer mt-4">{{ p.name }}
+
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                            </div>
+                            {% else %}
+                            <!-- Carousel slide-->
+                            <div class="carousel-item">
+                               <div class="media">
+                                    <div class="media-body ml-3">
+                                        <blockquote class="blockquote border-0 p-0">
+                                            <p class="card-text"> <i class="fa fa-quote-left mr-3 text-danger"></i>{{ p.message }}</p>
+                                            <footer class="blockquote-footer mt-4">{{ p.name }}
+
+                                            </footer>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                        <!--  controls [dots]-->
+                        <a class="carousel-control-prev width-auto" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <i class="fa fa-angle-left text-dark text-lg"></i>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next width-auto" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <i class="fa fa-angle-right text-dark text-lg"></i>
+                            <span class="sr-only">Next</span>
+                        </a>
+
+
+                            {% endfor %}
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock content %}

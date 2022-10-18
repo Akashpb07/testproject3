@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+  <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Contact Us</h2>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="contact-about">
+              <img src="{% static 'img/learningpoint.png' %}" width="100" alt="" >
+              <h3>Learning Point</h3>
+
+              <div class="social-links">
+
+                <a href="#" class="facebook"><i class="fa fa-facebook-square"></i></a>
+                <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                <a href="#" class="linkedin"><i class="fa fa-linkedin-square"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
+            <div class="info">
+              <div>
+                <i class="fa fa-map-marker"></i>
+                <p>A108 Adam Street</p>
+
+              </div>
+
+              <div>
+                <i class="fa fa-envelope"></i>
+                <p>info@example.com</p>
+              </div>
+
+              <div>
+                <i class="fa fa-phone"></i>
+                <p href="tel:+91 8699960975" >+91 8699960975</p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
+            <form  method="post" role="form" class="php-email-form">
+              {% csrf_token %}
+              <h5>Enter Your Query:</h5>
+              <div class="form-group">
+                {{form.first_name}}
+<!--                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>-->
+              </div>
+              <div class="form-group">
+                {{form.last_name}}
+<!--                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>-->
+              </div>
+              <div class="form-group">
+                {{form.e_mail}}
+<!--                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>-->
+              </div>
+              <div class="form-group">
+                {{form.phone_number}}
+<!--                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>-->
+              </div>
+              <div class="form-group">
+                {{form.contact_message}}
+<!--                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>-->
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+{% endblock content %}
